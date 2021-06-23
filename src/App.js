@@ -30,11 +30,21 @@ handelClick = (index) => {
     courses.splice(index, 1)
     this.setState({courses})
 }
+
+editCourse = (index, value) => {
+  let courses = this.state.courses
+  let course = courses[index]
+  course['name'] = value;
+  this.setState({courses})
+
+}
+
+
   render(){
 
     const {courses} = this.state;  //give me courses from state
     
-    const CourseList = courses.map( (item, index) => {return <CrudValue details = {item} key = {index} index={index}  handelClick = {this.handelClick}/>
+    const CourseList = courses.map( (item, index) => {return <CrudValue details = {item} key = {index} index={index}  handelClick = {this.handelClick} editCourse = {this.editCourse} />
     
 })
     return (
